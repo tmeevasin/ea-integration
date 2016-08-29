@@ -1,0 +1,44 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+GET     /configurations             controllers.ConfigurationsController.index
+GET     /configurations/run         controllers.ConfigurationsController.run
+GET     /configurations/stop        controllers.ConfigurationsController.stop
+GET     /configurations/removeQs    controllers.ConfigurationsController.removeQs
+GET     /configurations/:id         controllers.ConfigurationsController.show(id: String)
+POST    /configurations             controllers.ConfigurationsController.create
+PUT     /configurations/:id         controllers.ConfigurationsController.update(id: String)
+DELETE  /configurations/:id         controllers.ConfigurationsController.delete(id: String)
+PUT     /configurations/:id         controllers.ConfigurationsController.update(id: String)
+PUT     /configurations/:id/duplicate controllers.ConfigurationsController.duplicate(id: String)
+PUT     /configurations/:id/test/:projectUri  controllers.ConfigurationsController.test(id: String, projectUri: String)
+PUT     /configurations/:id/resync  controllers.ConfigurationsController.resync(id: String)
+
+# metadata
+GET     /configurations/:id/endpoints/:endpointUri/resourceTypeHeaders controllers.ConfigurationsController.resourceTypeHeaders(id: String, endpointUri: String)
+GET     /configurations/:id/endpoints/:endpointUri/resourceTypeDetail/:resourceTypeName  controllers.ConfigurationsController.resourceTypeDetail(id: String, endpointUri: String, resourceTypeName: String)
+PUT     /resourceTypes/update       controllers.ResourceTypesController.update
+
+
+GET     /monitoring                 controllers.MonitoringController.index
+PUT     /monitoring/cleanQueue/:queueName controllers.MonitoringController.cleanQueue(queueName: String)
+PUT     /monitoring/removeAllQueues controllers.MonitoringController.removeAllQueues
+
+POST    /login                      controllers.SessionController.login
+POST    /logout                     controllers.SessionController.logout
+GET     /test                       controllers.SessionController.test
+
+GET     /log                        controllers.LogController.log
+
+GET     /users                      controllers.UsersController.index
+POST    /users                      controllers.UsersController.save
+
+GET     /ui                         controllers.UiController.index
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

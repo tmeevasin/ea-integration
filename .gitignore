@@ -1,0 +1,11 @@
+**/target
+**/logs
+/.idea
+/bin
+/public/ui.css
+/public/ui.js
+/public/ui.map
+/public/vendor.css
+/public/vendor.js
+/public/vendor.map
+/public/bootstrap.css.map
